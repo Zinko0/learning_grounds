@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dul22x51c0e6c"]
+
+[ext_resource type="PackedScene" uid="uid://dlfa2g8bdxmux" path="res://assets/Weapons/dragonslayer_sword.glb" id="1_nqxus"]
+[ext_resource type="AudioStream" uid="uid://0keiwgmjcuma" path="res://assets/sounds/Berserk Clang Sound Effect.mp3" id="2_jb5wq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwmam"]
+size = Vector3(0.4, 2.4, 0.2)
+
+[node name="MeleeWeapon" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_nqxus")]
+transform = Transform3D(0.572648, 0.0985312, -0.813858, -0.478283, 0.846442, -0.234054, 0.665822, 0.523286, 0.531839, 0.513311, -0.402305, -0.727199)
+
+[node name="Hitbox" type="Area3D" parent="Sketchfab_Scene"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene/Hitbox"]
+transform = Transform3D(1, -1.78814e-07, 1.49012e-07, -1.19209e-07, 1, -4.17233e-07, 0, 0, 1, 2.38419e-07, 1.2, 4.76837e-07)
+shape = SubResource("BoxShape3D_hwmam")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Sketchfab_Scene"]
+stream = ExtResource("2_jb5wq")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbfwxm63v8wec"]
+
+[ext_resource type="PackedScene" uid="uid://dn6vehvi1r86e" path="res://assets/brackeys_3d_game_assets/dungeon_assets/building/floor_stone.glb" id="1_yobu0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yobu0"]
+size = Vector3(4.00024, 0.152374, 3.99976)
+
+[node name="Church_floor" type="StaticBody3D"]
+
+[node name="floor_stone" parent="." instance=ExtResource("1_yobu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115619, -0.0204847, -0.10736)
+shape = SubResource("BoxShape3D_yobu0")

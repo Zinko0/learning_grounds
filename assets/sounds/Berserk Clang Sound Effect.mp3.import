@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0keiwgmjcuma"
+path="res://.godot/imported/Berserk Clang Sound Effect.mp3-535dd7db63e9d06d96eedc5aeab43e67.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Berserk Clang Sound Effect.mp3"
+dest_files=["res://.godot/imported/Berserk Clang Sound Effect.mp3-535dd7db63e9d06d96eedc5aeab43e67.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

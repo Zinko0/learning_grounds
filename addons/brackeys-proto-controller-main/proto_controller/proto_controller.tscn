@@ -1,0 +1,187 @@
+[gd_scene load_steps=14 format=3 uid="uid://bs72ogkvdd7d6"]
+
+[ext_resource type="Script" uid="uid://deujc18hlike7" path="res://scripts/hero.gd" id="1_bc4e2"]
+[ext_resource type="PackedScene" uid="uid://dlfa2g8bdxmux" path="res://assets/Weapons/dragonslayer_sword.glb" id="1_qqi21"]
+[ext_resource type="AudioStream" uid="uid://0keiwgmjcuma" path="res://assets/sounds/Berserk Clang Sound Effect.mp3" id="2_3h6nv"]
+[ext_resource type="AudioStream" uid="uid://cei8dsgrhk4e2" path="res://assets/sounds/sekiro-deflecting-sound-effect-made-with-Voicemod.mp3" id="4_2o2of"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
+albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ucva2"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iof21"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3h6nv"]
+size = Vector3(0.4, 2.4, 0.2)
+
+[sub_resource type="Animation" id="Animation_3h6nv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/MeleeWeapon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/MeleeWeapon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qqi21"]
+resource_name = "Swing"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/MeleeWeapon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.433333, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.1249, 0.593727, -0.797559), Vector3(-0.721765, 1.77259, -1.38244), Vector3(-0.721765, 2.99432, -1.38244)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/MeleeWeapon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.27, 0.433333, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.6), Vector3(0.2, 0, -1.1), Vector3(-0.7, 0, -1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_bc4e2"]
+resource_name = "Swing_back"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/MeleeWeapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.7, 0, -1.1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/MeleeWeapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.721765, 2.99432, -1.38244), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2o2of"]
+resource_name = "parry"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/MeleeWeapon:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/MeleeWeapon:rotation")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.590372, -0.924946, 2.74435), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bc4e2"]
+_data = {
+&"RESET": SubResource("Animation_3h6nv"),
+&"Swing": SubResource("Animation_qqi21"),
+&"Swing_back": SubResource("Animation_bc4e2"),
+&"parry": SubResource("Animation_2o2of")
+}
+
+[node name="ProtoController" type="CharacterBody3D"]
+script = ExtResource("1_bc4e2")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+material_override = SubResource("StandardMaterial3D_iof21")
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_ucva2")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_iof21")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="MeleeWeapon" type="Node3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Sketchfab_Scene" parent="Head/Camera3D/MeleeWeapon" instance=ExtResource("1_qqi21")]
+transform = Transform3D(0.572648, 0.098531, -0.813858, -0.478283, 0.846442, -0.234054, 0.665822, 0.523286, 0.531839, 0.513311, -0.402305, -0.727199)
+
+[node name="Hitbox" type="Area3D" parent="Head/Camera3D/MeleeWeapon/Sketchfab_Scene"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/MeleeWeapon/Sketchfab_Scene/Hitbox"]
+transform = Transform3D(1, -1.78814e-07, 1.49012e-07, -1.19209e-07, 1, -4.17233e-07, 0, 0, 1, 2.38419e-07, 1.2, 4.76837e-07)
+shape = SubResource("BoxShape3D_3h6nv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Head/Camera3D/MeleeWeapon/Sketchfab_Scene"]
+stream = ExtResource("2_3h6nv")
+
+[node name="parry" type="AudioStreamPlayer3D" parent="Head/Camera3D/MeleeWeapon/Sketchfab_Scene"]
+stream = ExtResource("4_2o2of")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bc4e2")
+}
+
+[node name="HP" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished" flags=3]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started" flags=3]
