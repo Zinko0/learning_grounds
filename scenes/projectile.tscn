@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://wqxwaggyddv1"]
+
+[ext_resource type="Script" uid="uid://bruto7twird5c" path="res://scripts/projectile.gd" id="1_a85iw"]
+[ext_resource type="PackedScene" uid="uid://4wekdvjlfm7n" path="res://scenes/uploads_files_5438013_bumerang.tscn" id="2_qxf0c"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_akgne"]
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a85iw"]
+transparency = 1
+albedo_color = Color(0, 0.952941, 0.956863, 0.505882)
+
+[sub_resource type="Animation" id="Animation_sxmqc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("uploads_files_5438013_Bumerang:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dgwo2"]
+resource_name = "spin"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("uploads_files_5438013_Bumerang:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.698132, 0), Vector3(0, -1.47106, 0), Vector3(0, -2.32253, 0), Vector3(0, 3.10918, 0), Vector3(0, 2.25771, 0), Vector3(0, 1.50514, 0), Vector3(0, 0.752569, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2xblw"]
+_data = {
+&"RESET": SubResource("Animation_sxmqc"),
+&"spin": SubResource("Animation_dgwo2")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qxf0c"]
+animation = &"spin"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dgwo2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_sxmqc"]
+states/spin/node = SubResource("AnimationNodeAnimation_qxf0c")
+states/spin/position = Vector2(330, 112)
+transitions = ["Start", "spin", SubResource("AnimationNodeStateMachineTransition_dgwo2")]
+
+[node name="projectile" type="Node3D"]
+top_level = true
+script = ExtResource("1_a85iw")
+
+[node name="uploads_files_5438013_Bumerang" parent="." instance=ExtResource("2_qxf0c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("CylinderMesh_akgne")
+surface_material_override/0 = SubResource("StandardMaterial3D_a85iw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.00168642, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2xblw")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_sxmqc")
+anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="timeout" from="Timer" to="." method="cleanup"]

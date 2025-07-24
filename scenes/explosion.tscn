@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://bq5y2hvacwyfl"]
+
+[ext_resource type="Script" uid="uid://cbm12n7v62eka" path="res://scripts/explosion.gd" id="1_q7epf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxas0"]
+transparency = 1
+albedo_color = Color(0.278431, 0, 0.278431, 0.52549)
+emission_enabled = true
+emission = Color(0.168534, 1.99442e-05, 0.168532, 1)
+emission_energy_multiplier = 3.68
+
+[sub_resource type="SphereMesh" id="SphereMesh_j4sxf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m5xho"]
+top_radius = 0.0
+bottom_radius = 0.08
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kmxf7"]
+
+[node name="explosion" type="Node3D"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+script = ExtResource("1_q7epf")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_vxas0")
+mesh = SubResource("SphereMesh_j4sxf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(0.622301, -2.46962, -1.58547, 2.17132, 1.47779, -1.44965, 1.97436, -0.846813, 2.09399, -1.14511, 0.686799, -0.394383)
+material_override = SubResource("StandardMaterial3D_vxas0")
+mesh = SubResource("CylinderMesh_m5xho")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(-2.82939, 0.997273, -3.3729e-08, -0.67092, -1.90348, 2.2196, 0.737849, 2.09337, 2.01826, 0.478071, -0.918883, 1.01055)
+material_override = SubResource("StandardMaterial3D_vxas0")
+mesh = SubResource("CylinderMesh_m5xho")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(2.58552, 1.52153, 2.35748e-07, 0.791849, -1.34558, 2.56172, 1.29924, -2.20779, -1.56129, 0.714711, -0.601576, -1.07059)
+material_override = SubResource("StandardMaterial3D_vxas0")
+mesh = SubResource("CylinderMesh_m5xho")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1.00936, 2.8251, -8.41945e-09, -2.81988, 1.0075, 0.182257, 0.171632, -0.0613212, 2.99446, 1.34409, 0.490073, -0.0409852)
+material_override = SubResource("StandardMaterial3D_vxas0")
+mesh = SubResource("CylinderMesh_m5xho")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(-2.04155, -2.1982, 2.01743e-10, 2.19819, -2.04154, 0.0101056, -0.00740468, 0.006877, 2.99998, -0.896635, -0.838096, 0.00870297)
+material_override = SubResource("StandardMaterial3D_vxas0")
+mesh = SubResource("CylinderMesh_m5xho")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(2.99954, 0.0526713, -5.29986e-09, -0.0241977, 1.37802, -2.66467, -0.046784, 2.66426, 1.37823, 0, 0.57843, 1.21259)
+material_override = SubResource("StandardMaterial3D_vxas0")
+mesh = SubResource("CylinderMesh_m5xho")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(2.40304, -1.77508, 0.272895, 1.63816, 2.35331, 0.882235, -0.736082, -0.557667, 2.85433, -0.428073, 1.15489, -0.232583)
+material_override = SubResource("StandardMaterial3D_vxas0")
+mesh = SubResource("CylinderMesh_m5xho")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_kmxf7")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

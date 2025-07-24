@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://73lysylxhjj1"]
+
+[ext_resource type="PackedScene" uid="uid://bd4nl6422bhx7" path="res://assets/uploads_files_4367404_hand.glb" id="1_7fkqo"]
+[ext_resource type="Script" uid="uid://ccacmsps13s5u" path="res://scripts/point.gd" id="2_c0ia7"]
+[ext_resource type="PackedScene" uid="uid://4wekdvjlfm7n" path="res://scenes/uploads_files_5438013_bumerang.tscn" id="2_q733i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0ia7"]
+albedo_color = Color(1, 0.692286, 0.770143, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35mby"]
+albedo_color = Color(1, 0.694118, 0.768627, 1)
+
+[node name="uploads_files_4367404_hand" instance=ExtResource("1_7fkqo")]
+script = ExtResource("2_c0ia7")
+
+[node name="hand" parent="." index="0"]
+transform = Transform3D(0.0321394, -0.0383022, 0, 0.0383022, 0.0321394, 0, 0, 0, 0.05, 0, 0, 0.916718)
+material_override = SubResource("StandardMaterial3D_c0ia7")
+
+[node name="arm_lower" parent="hand" index="0"]
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="index_0" parent="hand" index="1"]
+transform = Transform3D(1, 0, 0, 0, -0.34202, -0.939693, 0, 0.939693, -0.34202, 0.635515, 0, -1.9933)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="index_1" parent="hand/index_0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0, -0.620542)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="index_2" parent="hand/index_0/index_1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0, -0.596836)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="middle_0" parent="hand" index="2"]
+transform = Transform3D(1, 0, 0, 0, -0.173648, -0.984808, 0, 0.984808, -0.173648, 0.219422, 0, -1.96367)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="middle_1" parent="hand/middle_0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, -0.939693, 0, 0.939693, 0.34202, 0, 0, -0.595449)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="middle_2" parent="hand/middle_0/middle_1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, -0.576577)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="pinky_0" parent="hand" index="3"]
+transform = Transform3D(1, 0, 0, 0, -0.173648, -0.984808, 0, 0.984808, -0.173648, -0.636916, 0, -1.87594)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="pinky_1" parent="hand/pinky_0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, -0.984808, 0, 0.984808, 0.173648, 0, 0, -0.508631)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="pinky_2" parent="hand/pinky_0/pinky_1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 0, -0.484157)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="ring_0" parent="hand" index="4"]
+transform = Transform3D(1, 0, 0, 0, -0.173648, -0.984808, 0, 0.984808, -0.173648, -0.22161, 0, -1.94957)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="ring_1" parent="hand/ring_0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, -0.984808, 0, 0.984808, 0.173648, 0, 0, -0.578411)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="ring_2" parent="hand/ring_0/ring_1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.939692, -0.34202, 0, 0.34202, 0.939692, 0, 0, -0.558439)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="thumb_0" parent="hand" index="5"]
+transform = Transform3D(0.99657, -0.482515, -0.459182, 0.462333, 1.09595, -0.148227, 0.479496, -0.0538731, 1.09727, 0.550059, -0.128288, -0.432191)
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="thumb_1" parent="hand/thumb_0" index="0"]
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="thumb_2" parent="hand/thumb_0/thumb_1" index="0"]
+material_override = SubResource("StandardMaterial3D_35mby")
+
+[node name="boomerang" parent="." index="1" instance=ExtResource("2_q733i")]
+transform = Transform3D(-0.440872, 0.860241, -0.25616, -0.572957, -0.489404, -0.657422, -0.690907, -0.14307, 0.708646, 0.0763534, 0.116373, 0.822711)

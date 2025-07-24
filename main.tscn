@@ -1,13 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0y3sct4qsoxy"]
+[gd_scene load_steps=26 format=3 uid="uid://b0y3sct4qsoxy"]
 
+[ext_resource type="Script" uid="uid://d1ylut5kdl6j8" path="res://main.gd" id="1_vivmo"]
 [ext_resource type="PackedScene" uid="uid://ct6q7tbdrmo06" path="res://scenes/pillar.tscn" id="3_272bh"]
 [ext_resource type="PackedScene" uid="uid://dw33b6ssk2cfv" path="res://assets/brackeys_3d_game_assets/dungeon_assets/building/pillar.glb" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bbd51bpegefgq" path="res://scenes/wall.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bbfwxm63v8wec" path="res://scenes/church_floor.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://mblpswd0mxiw" path="res://scenes/Wall_corner.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://2iyfdn1mwsdm" path="res://scenes/Enemy.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bkdx53bny7acd" path="res://addons/brackeys-proto-controller-main/proto_controller.tscn" id="8_efxa6"]
 [ext_resource type="PackedScene" uid="uid://b67sbrwmmh77s" path="res://scenes/boss.tscn" id="8_kek77"]
-[ext_resource type="PackedScene" uid="uid://b7mkdblql36bx" path="res://scenes/BigGuy.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://r8vsl4m4x1m8" path="res://scenes/sniper_item.tscn" id="9_dg77c"]
+[ext_resource type="PackedScene" uid="uid://5r15gcsrcryf" path="res://scenes/slingshot_item.tscn" id="10_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://vuljuoco8bd2" path="res://scenes/boomer_item.tscn" id="11_w48qg"]
+[ext_resource type="Texture2D" uid="uid://r2by3rv6uet6" path="res://assets/pngegg.png" id="12_w48qg"]
+[ext_resource type="Texture2D" uid="uid://c1scme31kiv4m" path="res://assets/Hit-Marker-PNG-Picture.png" id="13_vivmo"]
+[ext_resource type="Script" uid="uid://c3g1dxddkdrny" path="res://scripts/boombar.gd" id="14_2cqfq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -37,7 +44,36 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Arr
 cell_height = 0.1
 agent_radius = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaehf"]
+bg_color = Color(0.670588, 0.670588, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.415466, 0.299798, 0.0376615, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_074og"]
+bg_color = Color(0.824504, 0.525079, 0.0104582, 1)
+border_width_left = 5
+border_color = Color(0.415686, 0.298039, 0.0392157, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cegan"]
+bg_color = Color(0.65098, 0, 0, 0.364706)
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+
 [node name="Main" type="Node3D"]
+script = ExtResource("1_vivmo")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
@@ -169,7 +205,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.57, 1.46, 16.75)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83, 1.46, 8.25)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, 8.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167442, 0.179823, 8.66504)
 navigation_mesh = SubResource("NavigationMesh_272bh")
 
 [node name="Wall1" type="Node3D" parent="NavigationRegion3D"]
@@ -1145,7 +1181,101 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.93333, 0)
 
 [node name="Monster" parent="." instance=ExtResource("8_kek77")]
 transform = Transform3D(-2.34923, 0, -0.855051, 0, 2.5, 0, 0.855051, 0, -2.34923, 1.176, 0.5, 75.003)
-player_path = NodePath("../BigGuy")
+player_path = NodePath("../ProtoController")
 
-[node name="BigGuy" parent="." instance=ExtResource("9_kek77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.56563, 6.13616)
+[node name="ProtoController" parent="." instance=ExtResource("8_efxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4332, 0.455702, 5.56309)
+
+[node name="sniper_item" parent="." instance=ExtResource("9_dg77c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.90097, 1.15628, 3.46465)
+
+[node name="Node3D" parent="." instance=ExtResource("10_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.94257, 1.22619, 5.38019)
+
+[node name="Node3D2" parent="." node_paths=PackedStringArray("distance") instance=ExtResource("11_w48qg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82315, 1.28744, 6.71335)
+distance = NodePath("../Control/boombar")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = -905.0
+offset_top = -537.0
+offset_right = 2666.0
+offset_bottom = 1630.0
+color = Color(0.435294, 0.0117647, 0.0666667, 0.219608)
+
+[node name="crosshair" type="TextureRect" parent="Control"]
+modulate = Color(0.835718, 3.22476e-06, 7.70092e-07, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.479
+anchor_top = 0.457
+anchor_right = 0.521
+anchor_bottom = 0.531
+offset_left = 8.19196
+offset_top = 7.86398
+offset_right = -8.19202
+offset_bottom = -8.08801
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_w48qg")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="tick" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.444
+anchor_top = 0.395
+anchor_right = 0.556
+anchor_bottom = 0.593
+offset_left = 58.512
+offset_top = 58.04
+offset_right = -58.5121
+offset_bottom = -58.264
+texture = ExtResource("13_vivmo")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="boombar" type="ProgressBar" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -46.0
+offset_right = 192.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_yaehf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_074og")
+max_value = 20.0
+value = 10.0
+allow_greater = true
+show_percentage = false
+script = ExtResource("14_2cqfq")
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/boombar"]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_right = 194.0
+offset_bottom = 16.0
+theme_override_styles/background = SubResource("StyleBoxFlat_cegan")
+show_percentage = false

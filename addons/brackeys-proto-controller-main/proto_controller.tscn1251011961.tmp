@@ -1,0 +1,148 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkdx53bny7acd"]
+
+[ext_resource type="Script" uid="uid://dk2fj5m7fhy86" path="res://scripts/sniper.gd" id="2_h60nn"]
+[ext_resource type="Script" uid="uid://ckfue0runugp4" path="res://scripts/fish.gd" id="3_0rk7u"]
+[ext_resource type="PackedScene" uid="uid://c74sj0aaa2i5k" path="res://scenes/fish.tscn" id="4_0rk7u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
+albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ucva2"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ths8c"]
+size = Vector3(0.969958, 1.58545, 1.3)
+
+[sub_resource type="Animation" id="Animation_ujot4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/fish:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.547218, -0.168341, -0.61053)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/fish:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.121616, 1.76652, 0.638387)]
+}
+
+[sub_resource type="Animation" id="Animation_h60nn"]
+resource_name = "attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/fish:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.21, 0.31, 0.41, 0.52, 0.59),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.547218, -0.168341, -0.61053), Vector3(-0.493402, 0.0376184, -0.468534), Vector3(-0.609051, -0.250284, -0.870901), Vector3(-0.698581, -0.510177, -1.15914), Vector3(-0.624661, -0.234814, -0.95936), Vector3(-0.547218, -0.168341, -0.61053)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/fish:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.21, 0.31, 0.41, 0.52, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.121616, 1.76652, 0.638387), Vector3(0.121616, 1.76652, 1.47646), Vector3(0.121616, 1.76652, 0.23848), Vector3(0.121616, 1.76652, -0.297406), Vector3(0.121616, 1.76652, 0.0909995), Vector3(0.121616, 1.76652, 0.638387)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"activate_attack_hitbox"
+}, {
+"args": [],
+"method": &"deactivate_attack_hitbox"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1tksx"]
+_data = {
+&"RESET": SubResource("Animation_ujot4"),
+&"attack": SubResource("Animation_h60nn")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rk7u"]
+
+[node name="ProtoController" type="CharacterBody3D"]
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+material_override = SubResource("StandardMaterial3D_iof21")
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_ucva2")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0467978, -0.0148654, -0.178299)
+script = ExtResource("2_h60nn")
+
+[node name="fish" parent="Head/Camera3D" node_paths=PackedStringArray("attack_hitbox", "attack_audio", "animator") instance=ExtResource("4_0rk7u")]
+transform = Transform3D(-0.110843, 0.144634, 1.66593, 0.76895, 0.545235, -0.207572, -1.04232, 0.386855, -0.33029, -0.547218, -0.168341, -0.61053)
+script = ExtResource("3_0rk7u")
+attack_hitbox = NodePath("Area3D")
+attack_audio = NodePath("AudioStreamPlayer3D")
+animator = NodePath("AnimationPlayer")
+
+[node name="Area3D" type="Area3D" parent="Head/Camera3D/fish"]
+transform = Transform3D(-0.0655875, 0.455, -0.616757, 0.309141, 1.16539, 0.826866, 0.569062, -0.0709041, -0.112824, -0.335846, 0.870172, 0.230583)
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/fish/Area3D"]
+transform = Transform3D(0.865685, -0.498745, -0.0429114, 0.449401, 0.812067, -0.372274, 0.220518, 0.302987, 0.927131, -0.20251, -0.294121, -1.09759)
+shape = SubResource("BoxShape3D_ths8c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/fish"]
+root_node = NodePath("../../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_1tksx")
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Head/Camera3D/fish"]
+transform = Transform3D(-0.0655875, 0.455, -0.616757, 0.309141, 1.16539, 0.826866, 0.569062, -0.0709041, -0.112824, -0.335846, 0.870172, 0.230583)
+volume_db = -45.715
+max_db = 0.7
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.047, -0.015, -0.178)
+target_position = Vector3(0, 0, -2)
+hit_from_inside = true
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.797806, 0)
+shape = SubResource("CapsuleShape3D_0rk7u")
+
+[connection signal="body_entered" from="Head/Camera3D/fish/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Head/Camera3D/fish/Area3D" to="Head/Camera3D/fish" method="_on_area_3d_body_entered"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://r8vsl4m4x1m8"]
+
+[ext_resource type="Script" uid="uid://bp3ua3xhrsq8r" path="res://scripts/sniper_item.gd" id="1_c1jsf"]
+[ext_resource type="PackedScene" uid="uid://0b81cu8nvco2" path="res://scenes/sketchfab_scene.tscn" id="2_1rwno"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c1jsf"]
+size = Vector3(0.15, 0.25, 1)
+
+[node name="sniper_item" type="Node3D"]
+script = ExtResource("1_c1jsf")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_1rwno")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.25)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025, 0.125, 0)
+shape = SubResource("BoxShape3D_c1jsf")
+
+[editable path="Sketchfab_Scene"]

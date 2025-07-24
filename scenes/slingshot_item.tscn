@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://5r15gcsrcryf"]
+
+[ext_resource type="Script" uid="uid://c7b4pdbafhkea" path="res://scripts/slingshot_item.gd" id="1_c0sl0"]
+[ext_resource type="PackedScene" uid="uid://bva8n0mdkmivh" path="res://assets/lowpoly_slingshot.glb" id="1_khx22"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c0sl0"]
+size = Vector3(0.0970459, 0.529297, 0.367798)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_c0sl0")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_khx22")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0055542, 0.19043, 0.00213623)
+shape = SubResource("BoxShape3D_c0sl0")

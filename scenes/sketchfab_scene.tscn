@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://0b81cu8nvco2"]
+
+[ext_resource type="PackedScene" uid="uid://bde6v5gc2j54y" path="res://assets/m24a2_low-poly.glb" id="1_r57si"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhub7"]
+albedo_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_r57si")]
+
+[node name="Object_4" parent="Sketchfab_model/M24A2 1_obj_cleaner_materialmerger_gles" index="2"]
+material_override = SubResource("StandardMaterial3D_dhub7")

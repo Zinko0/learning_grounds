@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3bt0imrlatq0"]
+
+[ext_resource type="Script" uid="uid://dnoo6x1kmscje" path="res://scripts/healthbar.gd" id="1_iywrq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_iywrq"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iywrq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epg4t"]
+bg_color = Color(0.138384, 0.109411, 0.122069, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yqyl"]
+bg_color = Color(0.659139, 0, 0.159558, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Sprite3D" type="Sprite3D"]
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_iywrq")
+script = ExtResource("1_iywrq")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(125, 15)
+
+[node name="Panel" type="Panel" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iywrq")
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_epg4t")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3yqyl")
+max_value = 5.0
+step = 1.0
+value = 3.0
+show_percentage = false

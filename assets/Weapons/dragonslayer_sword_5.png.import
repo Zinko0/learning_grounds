@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlbcww3cwqtat"
+uid="uid://b1pucakwqqbiy"
 path.s3tc="res://.godot/imported/dragonslayer_sword_5.png-6f548764039bce7bebe53c0080d558c6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "b7a45355a740862938c65971a9ac9caf"
 }
 
 [deps]

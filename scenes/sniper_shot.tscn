@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dly77ffeuboyr"]
+
+[ext_resource type="Script" uid="uid://cv7p1kxk8hadh" path="res://scripts/sniper_shot.gd" id="1_pf581"]
+[ext_resource type="AudioStream" uid="uid://dgme7wen4ck6p" path="res://sounds/bonk_AgRFvsD.mp3" id="2_d6mwt"]
+
+[node name="sniper_shot" type="Node3D"]
+script = ExtResource("1_pf581")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(-0.0032288, 0.999995, 7.10543e-15, -0.999995, -0.0032288, -8.32667e-17, -2.77556e-17, -7.10543e-15, 1, 0, 0, 0)
+target_position = Vector3(0, 0, -1000)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="bonk" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_d6mwt")
+volume_db = -9.021

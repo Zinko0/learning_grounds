@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://4wekdvjlfm7n"]
+
+[ext_resource type="PackedScene" uid="uid://d0c3qkloywqm3" path="res://assets/uploads_files_5438013_Bumerang.glb" id="1_u7agj"]
+[ext_resource type="Script" uid="uid://dnd20eoqjlb3o" path="res://scripts/boom.gd" id="2_hu816"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7agj"]
+albedo_color = Color(0.985453, 0.411942, 0, 1)
+metallic = 0.3
+emission_enabled = true
+emission = Color(0.728274, 0.123726, 0, 1)
+emission_energy_multiplier = 2.0
+
+[node name="uploads_files_5438013_Bumerang" instance=ExtResource("1_u7agj")]
+script = ExtResource("2_hu816")
+
+[node name="Bumerang" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00616539, -0.028903, 0.00813454)
+material_override = SubResource("StandardMaterial3D_u7agj")

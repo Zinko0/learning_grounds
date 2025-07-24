@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7mkdblql36bx"]
+[gd_scene load_steps=6 format=3 uid="uid://b7mkdblql36bx"]
 
 [ext_resource type="Script" uid="uid://dua5ksi7e5g2m" path="res://scripts/big_guy.gd" id="1_esy5s"]
-[ext_resource type="Script" uid="uid://m7c3vlwvql0b" path="res://scenes/grapple_controller.gd" id="2_8o7ky"]
 [ext_resource type="PackedScene" uid="uid://dgerhep7nukb5" path="res://scenes/rope.tscn" id="2_w67nh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8o7ky"]
@@ -32,7 +31,4 @@ target_position = Vector3(0, 0, -50)
 [node name="rope" parent="Camera3D" instance=ExtResource("2_w67nh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.578027)
 
-[node name="GrappleController" type="Node" parent="." node_paths=PackedStringArray("rope", "ray")]
-script = ExtResource("2_8o7ky")
-rope = NodePath("../Camera3D/rope")
-ray = NodePath("../Camera3D/RayCast3D")
+[node name="GrappleController" type="Node" parent="."]

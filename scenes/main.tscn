@@ -1,0 +1,293 @@
+[gd_scene load_steps=17 format=3 uid="uid://ceu2qe3hqrt3h"]
+
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/brackeys-proto-controller-main/proto_controller/i_dont_like this guy.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://daphcx3wkv42c" path="res://scripts/main.gd" id="1_kek77"]
+[ext_resource type="PackedScene" uid="uid://bbd51bpegefgq" path="res://scenes/wall.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://r8vsl4m4x1m8" path="res://scenes/sniper_item.tscn" id="4_kek77"]
+[ext_resource type="Texture2D" uid="uid://r2by3rv6uet6" path="res://assets/pngegg.png" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://c1scme31kiv4m" path="res://assets/Hit-Marker-PNG-Picture.png" id="8_kek77"]
+[ext_resource type="Script" uid="uid://c3g1dxddkdrny" path="res://scripts/boombar.gd" id="10_dg77c"]
+[ext_resource type="PackedScene" uid="uid://5r15gcsrcryf" path="res://scenes/slingshot_item.tscn" id="10_efxa6"]
+[ext_resource type="PackedScene" uid="uid://vuljuoco8bd2" path="res://scenes/boomer_item.tscn" id="11_dg77c"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("ProceduralSkyMaterial_7dm0k")
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_4c57u"]
+vertices = PackedVector3Array(-9.55, 4.31975, -1.1, 2.2, 4.31975, -1.6, -9.3, 4.31975, -1.6, 6.95, 4.31975, 7.65, 5.7, 4.31975, 7.9, 6.95, 4.31975, 8.4, -9.8, 4.31975, -9.1, -9.55, 4.31975, -7.1, -9.05, 4.31975, -8.85, -9.55, 4.31975, 8.4, -8.05, 4.31975, 8.15, -8.05, 4.31975, 7.65, -9.55, 4.31975, 7.4, -9.8, 4.31975, 22.65, 7.45, 4.31975, 22.65, 6.7, 4.31975, 22.4, -9.3, 4.31975, 22.15, 7.2, 4.31975, 6.15, 7.45, 4.31975, -9.1, 6.95, 4.31975, -8.6, -7.8, 0.319753, -2.35, -7.8, 0.319753, -1.35, -7.05, 0.319753, -1.35, -6.8, 0.319753, -2.6, 2.95, 0.319753, -2.6, 6.2, 0.319753, -7.6, -8.3, 0.319753, -7.85, -8.55, 0.319753, -2.6, 3.2, 0.319753, -1.35, 6.2, 0.319753, -1.35, -7.8, 0.319753, -0.600001, -6.8, 0.319753, -0.350001, -7.3, 0.319753, 6.65, -7.05, 0.319753, 7.9, 4.7, 0.319753, 8.15, 4.7, 0.319753, 7.15, 2.95, 0.319753, -0.350001, -8.55, 0.319753, -0.350001, -8.55, 0.319753, 6.65, 5.95, 0.319753, 6.9, 6.2, 0.319753, 5.65, -7.3, 0.319753, 9.15, -8.55, 0.319753, 9.15, -8.55, 0.319753, 21.15, -7.3, 0.319753, 21.4, 5.95, 0.319753, 21.4, 4.95, 0.319753, 9.15, 5.95, 0.319753, 9.15)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(6, 8, 7), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(16, 15, 13), PackedInt32Array(13, 15, 14), PackedInt32Array(5, 3, 17), PackedInt32Array(2, 0, 7), PackedInt32Array(7, 0, 6), PackedInt32Array(12, 9, 13), PackedInt32Array(15, 5, 14), PackedInt32Array(14, 5, 17), PackedInt32Array(19, 8, 18), PackedInt32Array(18, 8, 6), PackedInt32Array(0, 12, 6), PackedInt32Array(6, 12, 13), PackedInt32Array(18, 17, 19), PackedInt32Array(14, 17, 18), PackedInt32Array(13, 9, 16), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(23, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(20, 27, 23), PackedInt32Array(23, 27, 26), PackedInt32Array(28, 24, 29), PackedInt32Array(29, 24, 25), PackedInt32Array(21, 22, 30), PackedInt32Array(30, 22, 31), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 36), PackedInt32Array(33, 36, 35), PackedInt32Array(33, 35, 34), PackedInt32Array(30, 31, 37), PackedInt32Array(37, 31, 32), PackedInt32Array(37, 32, 38), PackedInt32Array(39, 35, 40), PackedInt32Array(40, 35, 36), PackedInt32Array(40, 36, 28), PackedInt32Array(40, 28, 29), PackedInt32Array(41, 33, 34), PackedInt32Array(43, 42, 41), PackedInt32Array(34, 46, 41), PackedInt32Array(41, 46, 43), PackedInt32Array(43, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(46, 47, 45)]
+agent_max_slope = 60.15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
+bg_color = Color(0.670588, 0.670588, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.415466, 0.299798, 0.0376615, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kek77"]
+bg_color = Color(0.824504, 0.525079, 0.0104582, 1)
+border_width_left = 5
+border_color = Color(0.415686, 0.298039, 0.0392157, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c57u"]
+bg_color = Color(0.65098, 0, 0, 0.364706)
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+
+[node name="main" type="Node3D" node_paths=PackedStringArray("hit_rect", "tick", "boombar")]
+transform = Transform3D(1.00905, 0, 0, 0, 1.00905, 0, 0, 0, 1.00905, 0, 0, 0)
+script = ExtResource("1_kek77")
+hit_rect = NodePath("Control/ColorRect")
+tick = NodePath("Control/tick")
+boombar = NodePath("Control/boombar")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0xm2m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.133476, -0.915243, 0.380151, 0.323773, 0.322266, 0.889559, -0.936672, 0.241818, 0.253316, 6.57937, 12.3064, 8.50137)
+shadow_enabled = true
+
+[node name="ProtoController" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5081, 2.2, 27.3643)
+can_freefly = true
+input_left = "move left"
+input_right = "move right"
+input_forward = "move ahead"
+input_back = "move back"
+input_jump = "jump "
+input_freefly = "fly"
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3, 0, 10.45)
+navigation_mesh = SubResource("NavigationMesh_4c57u")
+
+[node name="floor wood" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732301, -0.0198206, -6.43646)
+
+[node name="wall stone" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732301, -0.0198206, -6.43646)
+
+[node name="exterior" type="Node3D" parent="NavigationRegion3D/wall stone"]
+
+[node name="StaticBody3D9" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -10.4406, -0.059462, 11.9106)
+
+[node name="StaticBody3D10" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -10.4406, -0.059462, 7.91807)
+
+[node name="StaticBody3D11" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, 6.5236, -0.059462, 11.8576)
+
+[node name="StaticBody3D12" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, 6.5236, -0.059462, 7.86506)
+
+[node name="StaticBody3D5" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.97945, -0.0198206, -2.52341)
+
+[node name="StaticBody3D6" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98689, -0.0198206, -2.52341)
+
+[node name="StaticBody3D7" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82688, -0.0693722, 29.0404)
+
+[node name="StaticBody3D8" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.83433, -0.0693722, 29.0404)
+
+[node name="StaticBody3D13" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(-4.37115e-08, 0, 1, 0, 1, 0, -1, 0, -4.37115e-08, -10.4441, -0.0396413, 3.91246)
+
+[node name="StaticBody3D14" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(-4.37115e-08, 0, 1, 0, 1, 0, -1, 0, -4.37115e-08, -10.4441, -0.0396413, -0.0801063)
+
+[node name="StaticBody3D25" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.3191, -0.0198206, 15.6189)
+
+[node name="StaticBody3D26" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.3116, -0.0198206, 19.6189)
+
+[node name="StaticBody3D27" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.3358, 0, 23.6052)
+
+[node name="StaticBody3D28" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.3284, 0, 27.5052)
+
+[node name="StaticBody3D15" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(-4.37115e-08, 0, 1, 0, 1, 0, -1, 0, -4.37115e-08, 6.52009, -0.0396413, 3.85944)
+
+[node name="StaticBody3D16" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(-4.37115e-08, 0, 1, 0, 1, 0, -1, 0, -4.37115e-08, 6.52009, -0.0396413, -0.133118)
+
+[node name="StaticBody3D" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0127096, 0, -2.50961)
+
+[node name="StaticBody3D2" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97984, 0, -2.50961)
+
+[node name="StaticBody3D3" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.139857, -0.0495516, 29.0541)
+
+[node name="StaticBody3D4" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1324, -0.0495516, 29.0541)
+
+[node name="StaticBody3D21" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6.43094, -0.0198206, 15.5689)
+
+[node name="StaticBody3D22" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6.43838, -0.0198206, 19.5689)
+
+[node name="StaticBody3D23" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6.4142, 0, 23.5552)
+
+[node name="StaticBody3D24" parent="NavigationRegion3D/wall stone/exterior" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6.42165, 0, 27.4552)
+
+[node name="StaticBody3D9" parent="NavigationRegion3D/wall stone" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, -4.1406, -0.0590133, 5.01016)
+
+[node name="StaticBody3D10" parent="NavigationRegion3D/wall stone" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1.00001, 0, 2.84218e-14, 0, 1.00001, 0, -2.84218e-14, 0, 1.00001, -0.181144, -0.0689239, 5.02118)
+
+[node name="corners" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3, 0, -10.45)
+
+[node name="floor wood2" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732301, -0.0198206, 9.01354)
+
+[node name="NavigationRegion3D_floor wood_StaticBody3D7#Node3D" parent="." instance=ExtResource("4_kek77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1.35, 11.65)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = -905.0
+offset_top = -537.0
+offset_right = 2666.0
+offset_bottom = 1630.0
+color = Color(0.435294, 0.0117647, 0.0666667, 0.219608)
+
+[node name="crosshair" type="TextureRect" parent="Control"]
+modulate = Color(0.835718, 3.22476e-06, 7.70092e-07, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.479
+anchor_top = 0.457
+anchor_right = 0.521
+anchor_bottom = 0.531
+offset_left = 8.19196
+offset_top = 7.86398
+offset_right = -8.19202
+offset_bottom = -8.08801
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_5vw27")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="tick" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.444
+anchor_top = 0.395
+anchor_right = 0.556
+anchor_bottom = 0.593
+offset_left = 58.512
+offset_top = 58.04
+offset_right = -58.5121
+offset_bottom = -58.264
+texture = ExtResource("8_kek77")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="boombar" type="ProgressBar" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -46.0
+offset_right = 192.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_5vw27")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kek77")
+max_value = 20.0
+value = 10.0
+allow_greater = true
+show_percentage = false
+script = ExtResource("10_dg77c")
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/boombar"]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_right = 194.0
+offset_bottom = 16.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4c57u")
+show_percentage = false
+
+[node name="spawns" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 3.25)
+visible = false
+
+[node name="1" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.85, 0.1, 10.6)
+
+[node name="2" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.15, 2.98023e-08, 11)
+
+[node name="3" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55, 0.5, 1.2)
+
+[node name="4" type="Node3D" parent="spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.25, 1.65)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="Node3D" parent="." instance=ExtResource("10_efxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.95, 1.35, 25.5)
+
+[node name="Node3D2" parent="." node_paths=PackedStringArray("distance") instance=ExtResource("11_dg77c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8708, 1.48422, 27.124)
+distance = NodePath("../Control/boombar")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
