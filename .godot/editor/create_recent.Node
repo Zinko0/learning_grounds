@@ -1,0 +1,12 @@
+StaticBody3D
+Node3D
+MeshInstance3D
+CollisionShape3D
+Node
+RayCast3D
+WorldEnvironment
+Camera3D
+CharacterBody3D
+CSGCombiner3D
+CSGBox3D
+CSGCylinder3D

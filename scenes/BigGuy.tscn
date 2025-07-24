@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7mkdblql36bx"]
+
+[ext_resource type="Script" uid="uid://dua5ksi7e5g2m" path="res://scripts/big_guy.gd" id="1_esy5s"]
+[ext_resource type="Script" uid="uid://m7c3vlwvql0b" path="res://scenes/grapple_controller.gd" id="2_8o7ky"]
+[ext_resource type="PackedScene" uid="uid://dgerhep7nukb5" path="res://scenes/rope.tscn" id="2_w67nh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8o7ky"]
+albedo_color = Color(0.0509804, 0.741176, 0.85098, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w67nh"]
+material = SubResource("StandardMaterial3D_8o7ky")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ttni8"]
+
+[node name="BigGuy" type="CharacterBody3D"]
+script = ExtResource("1_esy5s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("CapsuleMesh_w67nh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("CapsuleShape3D_ttni8")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.444138)
+target_position = Vector3(0, 0, -50)
+
+[node name="rope" parent="Camera3D" instance=ExtResource("2_w67nh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.578027)
+
+[node name="GrappleController" type="Node" parent="." node_paths=PackedStringArray("rope", "ray")]
+script = ExtResource("2_8o7ky")
+rope = NodePath("../Camera3D/rope")
+ray = NodePath("../Camera3D/RayCast3D")
